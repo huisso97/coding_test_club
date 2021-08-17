@@ -1,0 +1,6 @@
+a = input()
+b = input()
+q = (int(a)*int(b[-1]))
+w = (int(a)*int(b[-2]))
+e = (int(a)*int(b[-3]))
+print(q, w, e, (int(a)*int(b)))
