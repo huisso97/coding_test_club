@@ -3,7 +3,7 @@ sys.stdin = open('2559.txt')
 
 N, K = map(int, input().split())
 tempartures = list(map(int, input().split()))
-
+print(te)
 maximum = sum(tempartures[:K])
 result = sum(tempartures[:K])
 temp = tempartures[:K]
