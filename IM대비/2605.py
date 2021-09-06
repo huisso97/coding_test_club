@@ -1,16 +1,50 @@
 import sys
 sys.stdin = open('2605.txt')
 
-N = int(input())
-# N명의 학생이 뽑은 번호의 리스트
-data = list(map(int, input().split()))
-# N명의 학생이 줄을 선 순서를 나타낼 결과
-result = []
-# 학생은 1번부터 N번까지
-for i in range(1, N+1):
-    # 그 학생이 뽑은 번호를 idx로 저장
-    idx = data[i-1]
-    # 그 학생을 총 길이에서 idx만큼 뺀 위치에 insert 시키기
-    result.insert(len(result)-idx, i)
+#그리디였다 규칙을 찾아보자~! 
+n = int(input())
+numbers = list(map(int, input().split()))
 
+result = []
+
+for idx in range(len(numbers)):
+    #idx+1 = 해당 값 들어왔을때의 리스트 길이
+    #location = 해당 인덱스가 서있을 위치
+    location = (idx+1)-1-numbers[idx]
+    result.insert(location, idx+1)
 print(*result)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# #학생 나열
+# ordered_st = []
+# #번호 나열
+# ordered_num = []
+# idx = 1
+# for i in range(n):
+#     #첫번째는 일단 넣고
+#     if numbers[i] == 0:
+#         ordered_st.append(numbers.index(i))
+#         ordered_num.append(numbers[i])
+#     #두번째부터
+#     else:
+#         #앞의 번호보다 크면
+#         if numbers[i] > ordered_num[-1]:
+#             ordered_st.append(numbers.index(i))
+#         #앞의 번호랑 같다 == 앞의 번호보다 뒤에 선다
+#         elif numbers[i] == ordered_num[-1]:
+#             k = ordered_st.pop()
+#             ordered_st.append(numbers.index(i))
+#             ordered_st.append(k)
+#         else:

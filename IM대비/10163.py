@@ -4,6 +4,7 @@ sys.stdin = open('10163.txt')
 n = int(input())
 arr = [[0] * 1001 for _ in range(1001)]
 result = []
+#n이 색종이의 개수 우리가 원하는거는 1과 2
 for i in range(n):
     lx, ly, w, h = map(int, input().split())
     # 반복되는 위치라도 뒤의 색종이 값을 덮어씌어주면서 반복문 실행
@@ -14,7 +15,7 @@ for i in range(n):
     # arr는 1001인데 존재하는 위치에서만 돌리기 위해 계속해서 추가해준다.
     result.append(ly)
     result.append(h)
-
+    print(result)
 for y in range(n):
     sub = 0
     # 그러면 여기서 0, 1001까지 계속 돌릴 필요가 없이 범위를 아래와 같이 지정해주면
