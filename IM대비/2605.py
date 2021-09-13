@@ -1,7 +1,7 @@
 import sys
 sys.stdin = open('2605.txt')
 
-#그리디였다 규칙을 찾아보자~! 
+#그리디였다 규칙을 찾아보자~!
 n = int(input())
 numbers = list(map(int, input().split()))
 
