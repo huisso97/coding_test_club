@@ -8,4 +8,4 @@ for i in range(C):
         if score > avg:
            cnt += 1
     result =  (cnt / scores[0]) * 100 
-    print(round(result,3)+'%')
+    print(f'{result:.3f}%')

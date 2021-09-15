@@ -1,16 +1,9 @@
-import sys
-sys.stdin = open('2231.txt')
-
 N = int(input())
-#sub와 N이 같아질때
 
-for num in range(N):
-    sub = num
-    for i in str(num):
-        #num의 각 숫자들을 더해준다
-        sub += int(i)
+for number in range(N):
+    sub = number
+    for num in str(number):
+        sub += int(num)
     if sub == N:
-        print(num)
+        print(number)
         break
-if sub != N:
-    print(0)

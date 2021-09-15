@@ -1,12 +1,6 @@
 n = int(input())
 
+number = 666
+count = 0
 
-result = []
-i = 665
 while True:
-    if '666' in str(i):
-        result. append(i)
-    i += 1
-    if len(result) == n:
-        break
-print(result[n-1])

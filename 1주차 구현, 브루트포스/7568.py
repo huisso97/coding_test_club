@@ -1,19 +1,16 @@
-import sys
-sys.stdin = open('7568.txt')
+#rank로 들어온 값보다 더 작으면 rank +=1 해준다
 n = int(input())
 
 people = []
-for _ in range(n):
-    person = list(map(int, input().split()))
-    people.append(person)
 
-maximum = [0, 0]
+for _ in range(n):
+    people.append(list(map(int,input().split())))
+# print(people)
+
 
 for i in range(len(people)):
-    for j in range(i+1, len(people)):
-        if people[i][0] > people[j][0] and people[i][1] > people[j][1] and people[i][0] > maximum[0] and people[i][1] > maximum[1]:
-            maximum = people[i]
-        else:
-            maximum = people[j]
-
-print(maximum)
+    rank = 1
+    for j in range(len(people)):
+        if people[i][0] < people[j][0] and people[i][1] < people[j][1]:
+            rank += 1
+    print(rank, end=' ')
