@@ -4,6 +4,30 @@ sys.stdin = open('11866.txt')
 n , k = map(int, input().split())
 
 
+# arr = [False]+[i+1 for i in range(n)]
+#
+# result = []
+# idx = 0
+# while len(result) < n:
+#     idx += k
+#     # +k인덱스 했는데 len초과하면 더한값의 * n 의 인덱스 접근
+#     if idx >= len(arr):
+#         idx = idx % n
+#         if arr[idx] == 0:
+#             while arr[idx] == True:
+#                 idx += 1
+#         else:
+#             result.append(arr[idx])
+#             arr[idx] = 0
+#     #리스트 길이 내의 인덱스는 직접 접근하되, 방문안한 애들만 체크
+#     else:
+#         if arr[idx] == 0:
+#             while arr[idx] == True:
+#                 idx += 1
+#         else:
+#             result.append(arr[idx])
+#             arr[idx] = 0
+#     print(idx)
 arr = [i+1 for i in range(n)]
 #arr=[1,2,3,4,5,6,7]
 #arr=[1,,,,,,]
