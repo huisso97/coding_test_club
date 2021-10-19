@@ -28,16 +28,16 @@ sys.stdin = open('1859.txt')
 #     #원상복구
 #     profit -= arr[idx]*cnt
 #     for i in range(cnt):
-#         buy[i] = True
-for i in range(N):
-    if isSel[i] == 1:
-        profit -= lst[i]
-    elif isSel[i] == 2:
-            idx = i-1
-        while idx!=0 or idx!=2:
-            profit += lst[idx]
-            idx -= 1
-#
+# #         buy[i] = True
+# for i in range(N):
+#     if isSel[i] == 1:
+#         profit -= lst[i]
+#     elif isSel[i] == 2:
+#             idx = i-1
+#         while idx!=0 or idx!=2:
+#             profit += lst[idx]
+#             idx -= 1
+# #
 # def setIsSel(flag, pos):
 #     global profit,
 #     if isSel[pos]*len(arr[:pos]) > profit:
@@ -50,29 +50,70 @@ for i in range(N):
 #         isSel[pos] = 2
 #     else:
 #         isSel[pos] = 1
+#
+#
+# T = int(input())
+# T = 3
+# for tc in range(1, T+1):
+#     N = int(input())
+#     arr = list(map(int, input().split()))
+#
+#
+#     maximum = 0
+#     profit = 0
+#     isSel = [0]*N
+#     for i in range(1, N):
+#         if arr[i-1] < arr[i]:
+#             setIsSel(i)
+
+#
+#
+# for i in range(N, -2, -1):
+#     if arr[i] > arr[i-1]:
+#         profit = arr[i]-arr[i-1]
+#     #
+# print(profit)
+#     #
+#     # else:
+#     #     continue
+#
+#
+#
+#
 
 
+#뒤에서부터 탐색
+#나보다 큰 값이 나올때까지 계속 판다
 T = int(input())
-T = 3
 for tc in range(1, T+1):
-    N = int(input())
+    n = int(input())
     arr = list(map(int, input().split()))
-
-
-    maximum = 0
+    length = len(arr)
     profit = 0
-    isSel = [0]*N
-    # for i in range(1, N):
-    #     if arr[i-1] < arr[i]:
-    #         setIsSel(flag, i)
+    maximum = 0
+    for i in range(len(arr)-1):
+        if arr[length-i-1] > maximum:
+            maximum = arr[length-i-1]
+        if maximum > arr[length-i-2]:
+            profit += maximum - arr[length-i-2]
+    print('#{} {}'.format(tc, profit))
 
 
 
-for i in range(N, -2, -1):
-    if arr[i] > arr[i-1]:
-        profit = arr[i]-arr[i-1]
-    #
-print(profit)
-    #
-    # else:
-    #     continue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

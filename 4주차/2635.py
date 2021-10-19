@@ -2,21 +2,28 @@ import sys
 sys.stdin = open('2635.txt')
 
 num1 = int(input())
-for i in range(1, num1):
-    arr = [num1]
-    num2 = num1
+arr = [num1]
+maximum = 0
+second = 0
+for i in range(1, num1+1):
     arr.append(i)
-    num2 = num1 - i
-    arr.append(num2)
-    num3 = num1 - num2
-    arr.append(num3)
-    tmp = 0
-    while tmp > 0:
-        tmp = num2-num3
-        if tmp < 0:
+    idx = 1
+    while True:
+        if arr[idx-1]-arr[idx] < 0 :
+            if len(arr) > maximum:
+                maximum = len(arr)
+                second = i
+            arr = [num1]
             break
-        arr.append(tmp)
-        num2 = num3
-        num3 = tmp
+        arr.append(arr[idx-1]-arr[idx])
+        idx += 1
 
-    print(arr)
+arr = [num1, second]
+idx = 1
+while True:
+    if arr[idx-1] - arr[idx] < 0:
+        break
+    arr.append(arr[idx-1]-arr[idx])
+    idx += 1
+print(maximum)
+print(*arr)

@@ -12,32 +12,29 @@ for i in range(num):
     if student[i][0] == 1:
         check = student[i][1]
         n = 1
-        while 0<=check<=len(switch):
-            check = check*n
-            if check > len(switch):
+        while True:
+            a = check*n
+            if a >= len(switch):
                 break
-            if switch[check] == 1:
-                switch[check] = 0
+            if switch[a] == 1:
+                switch[a] = 0
             else:
-                switch[check] = 1
+                switch[a] = 1
             n += 1
     if student[i][0] == 2:
         check = student[i][1]
-        if switch[check] == 1:
-            switch[check] = 0
-        else:
-            switch[check] = 1
-        i = 1
-        while 0<=check-i<=len(switch) and 0<=check+i<=len(switch):
-
-            if switch[check-i] == switch[check+i]:
-                if switch[check-i] == 0:
-                    switch[check-i] = 1
-                    switch[check+i] = 1
+        n = 0
+        while True:
+            if 0 < check-n and check+n<len(switch) and switch[check-n] == switch[check+n]:
+                if switch[check-n] == 0:
+                    switch[check-n] = 1
+                    switch[check+n] = 1
                 else:
-                    switch[check-i] = 0
-                    switch[check+i] = 0
-            i += 1
+                    switch[check-n] = 0
+                    switch[check+n] = 0
+                n += 1
+            else:
+                break
 switch.pop(0)
 while True:
     if len(switch) > 20:

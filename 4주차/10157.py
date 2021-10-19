@@ -2,32 +2,41 @@ import sys
 sys.stdin = open('10157.txt')
 
 C, R = map(int, input().split())
-K = map(int, input().split())
-#보드판 행 뒤집어
-#시계방향 상우하좌
+K = int(input())
+
+#시계방향 상우하좌로 돌건데, 영역을 벗어나면 방향을 바꿀거야
+#그런데 K값이 C*R보다 클 경우에는 0을 출력하고 멈출거야
+#방문처리하면서 점점 좁게
 #K 좌석 찾아
-board = [[0]*(C) for _ in range(R)]
-visited = [[False]*(C) for _ in range(R)]
+board = [[0]*C for _ in range(R)]
 
-dx = [-1, 0, 1, 0]
-dy = [0, 1, 0, -1]
-i = 1
-for x in range(len(board)):
-    for y in range(len(board)):
-        for j in range(4):
-            nx = x + dx[j]
-            ny = y + dy[j]
-            if 0<=nx<len(board) and 0<=ny<len(board) and visited[nx][ny] == False:
-                while True:
-                    board[nx][ny] = i
-                    if i == K:
-                        print(nx, ny)
-                    i += 1
+# print(visited)
+x = 0
+y = R
 
-                    visited[nx][ny] = True
+dx = [0, 1, 0, -1]
+dy = [-1, 0, 1, 0]
+#
+# for i in range(1, C*R+1):
+if C*R < K:
+    print(0)
+else:
+    idx = 0
+    i = 1
+    while i <= K:
+        if idx > 3:
+            idx = 0
+        nx = x + dx[idx]
+        ny = y + dy[idx]
+        if 0<=nx<C and 0<=ny<R and board[ny][nx]==0:
+            #벽 안만났으면 방문 안했네
+            board[ny][nx] = i
+            x = nx
+            y = ny
+            i += 1
+        else:
+        #벽을 만났거나 방문했으면:
+            idx += 1
+    print(x+1,R-y)
 
-# i = 1
-# while True:
-#     if i == K:
-#         pass
-#     i+=1
+# 시계방향 90도로 돌려서 행렬 만들어서 해보자
