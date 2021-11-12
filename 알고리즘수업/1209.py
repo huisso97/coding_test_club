@@ -1,29 +1,32 @@
 import sys
 sys.stdin = open('1209.txt')
 
-for _ in range(1, 11):
-    tc = int(input())
-    board = [list(map(int, input().split())) for _ in range(100)]
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
 
-    maximum = 0
-    tmp_d1 = 0
-    tmp_d2 = 0
+for test_case in range(1, 11):
+
+    count = int(input())
+    imap = list(map(int, input().split()))
+    imap.sort()
+    # print(imap)
+    # queue = collections.deque(imap)
+    # print(queue)
+
+    hmax = 0
+    hmin = 100
+
+    for i in range(count):
+        # queue.append((queue.pop() - 1))
+        # queue.appendleft((queue.popleft() + 1))
+        imap[99] -= 1
+        imap[0] += 1
+        imap.sort()
+
+        # queue.sort()
+
     for i in range(100):
-        tmp_x = 0
-        tmp_y = 0
-        tmp_d1 += board[i][i]
-        tmp_d2 += board[i][100-i-1]
-        for j in range(100):
-            tmp_x += board[i][j]
-            tmp_y += board[j][i]
-        if tmp_x > maximum:
-            maximum = tmp_x
-        if tmp_y > maximum:
-            maximum = tmp_y
-    if tmp_d1 > maximum:
-        maximum =tmp_d1
-    if tmp_d2 > maximum:
-        maximum = tmp_d2
-    print('#{} {}'.format(tc, maximum))
+        hmin = min(hmin, imap[i])
+        hmax = max(hmax, imap[i])
 
-
+    result = hmax - hmin
+    print('#{} {}'.format((test_case, result))

@@ -20,8 +20,8 @@ for tc in range(1, T+1):
     for i in range(len(result)):
         print(result[i], end='')
     print()
-'''
-꽌
+
+
 T = int(input())
 
 for tc in range(1, T+1):
@@ -41,4 +41,3 @@ for tc in range(1, T+1):
                 tmp += word[j][i]
         result += tmp
     print('#{} {}'.format(tc, result))
-'''
