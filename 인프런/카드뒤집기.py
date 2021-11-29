@@ -1,7 +1,3 @@
-# 열이 작을수록
-    # 행이 작을수록
-import sys
-sys.stdin = open('input.txt')
 # 인덱스상으로 인덱스1이 2인격이므로, 0을 넣어서 만들어야함
 # card = [i for i in range(1, 21)]
 card = [i for i in range(21)]
